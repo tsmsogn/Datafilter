@@ -85,11 +85,11 @@ class DatafilterComponentTest extends CakeTestCase {
 	}
 
 /**
- * testApplyFilterTress method
+ * testApplyFilterTres method
  *
  * @return void
  */
-	public function testApplyFilterTress() {
+	public function testApplyFilterTres() {
 		$this->Controller->request->data = array(
 			'Post' => array(
 				array(
