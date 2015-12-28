@@ -128,4 +128,30 @@ class DatafilterComponentTest extends CakeTestCase {
 		$this->assertEquals($expected, $actual);
 	}
 
+/**
+ * testApplyFilterCuatro method
+ *
+ * @return void
+ */
+	public function testApplyFilterCuatro() {
+		$this->Controller->request->data = array(
+			'Post' => array(
+				'key1' => ' value1 ',
+				'key2' => ' value2 '
+			)
+		);
+		$this->Datafilter->applyFilter(array('Post.key1'), 'trim');
+
+		$expected = array(
+			'Post' => array(
+				'key1' => 'value1',
+				'key2' => ' value2 ',
+			)
+		);
+
+		$actual = $this->Controller->request->data;
+
+		$this->assertEquals($expected, $actual);
+	}
+
 }
