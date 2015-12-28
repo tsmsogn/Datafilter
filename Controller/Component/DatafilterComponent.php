@@ -53,7 +53,7 @@ class DatafilterComponent extends Component {
 			}
 			return $cleanValues;
 		} else {
-			if ($element === '__ALL__' || Set::matches($element, Set::expand(array($path => '')))) {
+			if ($element === '__ALL__' || $element === $path || Set::matches($element, Set::expand(array($path => '')))) {
 				return call_user_func($filter, $value);
 			} else {
 				return $value;

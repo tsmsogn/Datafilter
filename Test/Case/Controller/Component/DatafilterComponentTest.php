@@ -85,11 +85,11 @@ class DatafilterComponentTest extends CakeTestCase {
 	}
 
 /**
- * testApplyFilterTress method
+ * testApplyFilterTres method
  *
  * @return void
  */
-	public function testApplyFilterTress() {
+	public function testApplyFilterTres() {
 		$this->Controller->request->data = array(
 			'Post' => array(
 				array(
@@ -120,6 +120,32 @@ class DatafilterComponentTest extends CakeTestCase {
 				array(
 					'name' => 'tag2'
 				),
+			)
+		);
+
+		$actual = $this->Controller->request->data;
+
+		$this->assertEquals($expected, $actual);
+	}
+
+/**
+ * testApplyFilterCuatro method
+ *
+ * @return void
+ */
+	public function testApplyFilterCuatro() {
+		$this->Controller->request->data = array(
+			'Post' => array(
+				'key1' => ' value1 ',
+				'key2' => ' value2 '
+			)
+		);
+		$this->Datafilter->applyFilter(array('Post.key1'), 'trim');
+
+		$expected = array(
+			'Post' => array(
+				'key1' => 'value1',
+				'key2' => ' value2 ',
 			)
 		);
 
