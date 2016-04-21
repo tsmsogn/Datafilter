@@ -1,6 +1,6 @@
 # Datafilter
 
-Applies a filter for given field(s)
+Applies the callback to the all or specific request data
 
 [![Build Status](https://travis-ci.org/tsmsogn/Datafilter.svg?branch=master)](https://travis-ci.org/tsmsogn/Datafilter)
 
@@ -66,79 +66,79 @@ class PostsController extends Controller {
 		/*
 		$this->request->data looks like:
 		Array
-        (
-            [Post] => Array
-            (
-                [key1] => value1
-                [key2] => value2
-            )
-        )
-        */
+		(
+			[Post] => Array
+			(
+				[key1] => value1
+				[key2] => value2
+			)
+		)
+		*/
 
 		$this->Datafilter->applyFilter('Post.key1', 'strtoupper');
 
 		/*
-        $this->request->data looks like:
-        Array
-        (
-            [Post] => Array
-            (
-                [key1] => VALUE1
-                [key2] => value2
-            )
-        )
-        */
+		$this->request->data looks like:
+		Array
+		(
+			[Post] => Array
+			(
+				[key1] => VALUE1
+				[key2] => value2
+			)
+		)
+		*/
 	}
 
 	public function baz() {
-	    // Applies user function for specific field(s) with {}'s
-	    /*
+		// Applies user function for specific field(s) with {}'s
+		/*
 		$this->request->data looks like:
-	    Array
-        (
-            [Post] => Array
-            (
-                [key1] =>  value1
-            )
-            [Tag] => Array
-            (
-                [0] => Array
-                (
-                    [name] => value2
-                )
-                [1] => Array
-                (
-                    [name] => value3
-                )
-            )
-        )
-        */
+		Array
+		(
+			[Post] => Array
+			(
+				[key1] =>  value1
+			)
+			[Tag] => Array
+			(
+				[0] => Array
+				(
+					[name] => value2
+				)
+				[1] => Array
+				(
+					[name] => value3
+				)
+			)
+		)
+		*/
 
 		$this->Datafilter->applyFilter(array('Tag.{n}.name'), function($value) {
-		    return 'prefix_' . $value;
+			return 'prefix_' . $value;
 		});
 
-	    /*
+		/*
 		$this->request->data looks like:
-	    Array
-        (
-            [Post] => Array
-            (
-                [key1] => value1
-            )
-            [Tag] => Array
-            (
-                [0] => Array
-                (
-                    [name] => prefix_value2
-                )
-                [1] => Array
-                (
-                    [name] => prefix_value3
-                )
-            )
-        )
-        */
+		Array
+		(
+			[Post] => Array
+			(
+				[key1] => value1
+			)
+			[Tag] => Array
+			(
+				[0] => Array
+				(
+					[name] => prefix_value2
+				)
+				[1] => Array
+				(
+					[name] => prefix_value3
+				)
+			)
+		)
+		*/
 	}
 
 }
