@@ -1,0 +1,13 @@
+{
+    "name": "tsmsogn/datafilter",
+    "description": "CakePHP plugin: Applies the callback to the all or specific request data",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tsmsogn",
+            "email": "tsmsogn@gmail.com"
+        }
+    ],
+    "require": {}
+}
